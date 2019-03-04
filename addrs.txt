@@ -1,0 +1,6 @@
+# 发件人
+name,account@163.com
+
+# 收件人
+to1,yyy1@163.com
+to2,yyy2@163.com
