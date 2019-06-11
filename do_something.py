@@ -76,7 +76,11 @@ def main(h=8, m=0):
             # 每20秒检测一次
             time.sleep(20)
         print('开始执行任务。。。')
-        do()
+        try:
+            do()
+        except:
+            print("发送失败，失败时间%s。" % (datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')))
+                        
         # 跳过这分钟
         time.sleep(60)
 

@@ -1,5 +1,6 @@
 import smtplib
 import configparser
+import datetime
 from email import encoders
 from email.header import Header
 from email.mime.text import MIMEText
@@ -70,7 +71,8 @@ def send_emails(html, from_addr, to_addrs):
 
     server = _get_server()
     server.sendmail(from_addr[1], [address for name, address in to_addrs], msg.as_string())
-    print('已发送至%s' % to_addrs)
+    nowTime = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    print('%s已发送至%s' % (nowTime, to_addrs)
     server.quit()
 
 
@@ -83,6 +85,7 @@ def send_separated_emails(html, from_addr, to_addrs):
         msg = _biuld_msg(html, from_addr=from_addr)
         msg['To'] = _formataddr(name, address)
         server.sendmail(from_addr[1], [address], msg.as_string())
-        print('已发送至%s%s' % (name, address))
+        nowTime = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        print('%s已发送至%s' % (nowTime, to_addrs)
     server.quit()
 
